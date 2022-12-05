@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "320679726834",
+    "project_id": "pucpcast",
+    "storage_bucket": "pucpcast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320679726834:android:f96989ea4e7829b4238a6b",
+        "android_client_info": {
+          "package_name": "com.example.pucpcast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320679726834-t3o029k8mk22akfnalvma3bh0pei636e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAufbv6fJz9lBwMxRCRsYhfv0OwLVm2cM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320679726834-t3o029k8mk22akfnalvma3bh0pei636e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
