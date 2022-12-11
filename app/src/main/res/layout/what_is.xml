@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".WhatIsActivity">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -52,6 +53,7 @@
         android:layout_marginTop="4dp"
         android:backgroundTint="#2F2C2C"
         android:fontFamily="@font/inter_semibold"
+        android:onClick="irLogin"
         android:text="Continuar"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"

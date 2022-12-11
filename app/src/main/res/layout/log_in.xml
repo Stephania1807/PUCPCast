@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constrain_sesion"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LogIn">
 
     <TextView
         android:id="@+id/inicio_sesion_title"
@@ -31,53 +33,53 @@
         app:srcCompat="@drawable/cuate2" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/codigoInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="259dp"
-        android:layout_height="60dp"
+        android:id="@+id/correoInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="253dp"
+        android:layout_height="66dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:hint="Código PUCP"
-        app:counterEnabled="true"
-        app:counterMaxLength="8"
+        android:hint="Correo"
+        app:hintTextColor="@color/azul"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageInicio"
-        app:startIconDrawable="@drawable/ic_person">
+        app:startIconDrawable="@drawable/ic_mail">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="@drawable/bordes_redondos"
-            android:id="@+id/codigoInputEditText"
+            android:id="@+id/correoInputEditText1"
             android:layout_width="match_parent"
-            android:layout_height="39dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bordes_redondos"
             android:fontFamily="@font/inter"
-            android:maxLength="8"
+            android:inputType="textEmailAddress"
             android:textAlignment="center"
             android:textSize="13sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="259dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:hint="Contraseña"
+        app:hintTextColor="@color/azul"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codigoInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/correoInput"
         app:startIconDrawable="@drawable/ic_key">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:background="@drawable/bordes_redondos"
             android:id="@+id/passwordInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="39dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bordes_redondos"
             android:fontFamily="@font/inter"
             android:inputType="textPassword"
             android:textAlignment="center"
@@ -85,13 +87,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/iniciarSesionBtn"
+        android:id="@+id/btn_restablecer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:backgroundTint="#2F2C2C"
         android:fontFamily="@font/inter_semibold"
         android:text="Iniciar Sesión"
+        android:textAlignment="center"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -99,29 +102,31 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
 
     <TextView
-        android:id="@+id/recordarPass"
+        android:id="@+id/olvidarPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter"
         android:text="¿Olvidaste tu contraseña?"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
 
     <Button
-        android:id="@+id/acordarPassbutton"
+        android:id="@+id/olvidarPassbutton"
         android:layout_width="118dp"
         android:layout_height="39dp"
         android:background="#00FFFFFF"
+        android:onClick="abrirForgetPassword"
         android:text="Pulsa aquí"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#008EFF"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recordarPass"
+        app:layout_constraintTop_toBottomOf="@+id/olvidarPass"
         app:rippleColor="#00FFFFFF"
         app:strokeColor="#00FFFFFF" />
 
@@ -131,18 +136,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="¿Aun no tienes una cuenta?"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iniciarSesionBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_restablecer" />
 
     <Button
         android:id="@+id/registrarbutton"
-        android:layout_width="118dp"
-        android:layout_height="39dp"
+        android:layout_width="138dp"
+        android:layout_height="40dp"
         android:background="#00FFFFFF"
+        android:fontFamily="@font/inter_bold"
+        android:onClick="abrirSignIn"
         android:text="Registrarse"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#008EFF"
         android:textStyle="italic"
@@ -152,21 +160,5 @@
         app:layout_constraintTop_toBottomOf="@+id/registrarText"
         app:rippleColor="#00FFFFFF"
         app:strokeColor="#00FFFFFF" />
-
-    <Button
-        android:id="@+id/GoogleBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:backgroundTint="#0C2A628E"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Ingresar con Google"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#D56147"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrarbutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
