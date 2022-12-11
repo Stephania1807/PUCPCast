@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilCliente">
+    tools:context=".PerfilAdministrador">
 
     <ImageView
         android:id="@+id/imageView"
@@ -108,7 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textCorreo" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationCliente"
+        android:id="@+id/bottomNavigationAdministrador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/negro65"
@@ -121,5 +121,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="670dp"
         app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/menu_cliente" />
+        app:menu="@menu/menu_admin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

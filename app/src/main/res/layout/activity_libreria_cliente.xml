@@ -10,15 +10,14 @@
         android:id="@+id/bottomNavigationCliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/azul"
-        app:itemIconTint="@color/amarillo"
+        android:background="@color/negro65"
+        app:itemIconTint="@color/white"
         app:labelVisibilityMode="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="670dp"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/menu_cliente" />
 

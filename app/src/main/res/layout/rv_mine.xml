@@ -27,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="119dp"
+            android:layout_height="130dp"
             android:orientation="vertical">
 
             <TextView
@@ -42,44 +42,65 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/textViewDisponiblesText"
+                android:id="@+id/registrador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="Categoría"
+                android:text="Registrador"
                 android:textColor="@color/negro65"
                 android:textSize="10sp" />
 
-
             <Button
-                android:id="@+id/editarBtn"
+                android:id="@+id/verDetalleBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="0dp"
-                android:backgroundTint="#D9D9D9"
+                android:backgroundTint="#2F2C2C"
                 android:fontFamily="@font/inter_semibold"
-                android:text="Editar"
+                android:text="Ver"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="#2F2C2C"
+                android:textColor="#D9D9D9"
                 android:textSize="9sp" />
 
-            <Button
-                android:id="@+id/eliminarBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="34dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="0dp"
-                android:backgroundTint="@color/negro65"
-                android:fontFamily="@font/inter_semibold"
-                android:text="Eliminar"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/naranja"
-                android:textSize="9sp" />
+            <LinearLayout
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="2dp"
+                tools:layout_editor_absoluteY="-2dp">
+
+                <Button
+                    android:id="@+id/editarBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="0dp"
+                    android:backgroundTint="#D9D9D9"
+                    android:drawableBottom="@drawable/ic_edit"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#2F2C2C"
+                    android:textSize="9sp" />
+
+                <Button
+                    android:id="@+id/eliminarBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="0dp"
+                    android:backgroundTint="@color/negro65"
+                    android:drawableBottom="@drawable/ic_baseline_delete_24"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/naranja"
+                    android:textSize="9sp" />
+            </LinearLayout>
 
 
         </LinearLayout>

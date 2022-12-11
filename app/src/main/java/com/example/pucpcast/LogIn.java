@@ -140,9 +140,9 @@ public class LogIn extends AppCompatActivity {
 
                                                                     if(usuario.getRol().equals("cliente")) {
 
-                                                                        Intent intent2 = new Intent(LogIn.this, ListaCliente.class);
-                                                                        intent2.putExtra("key",usuario.getKey());
-                                                                        startActivity(intent2);
+                                                                        Intent intent = new Intent(LogIn.this, ListaCliente.class);
+                                                                        intent.putExtra("key",usuario.getKey());
+                                                                        startActivity(intent);
                                                                     }
                                                                 }
 

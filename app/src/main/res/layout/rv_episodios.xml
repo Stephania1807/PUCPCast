@@ -27,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="66dp"
+            android:layout_height="94dp"
             android:orientation="vertical">
 
             <TextView
@@ -51,6 +51,20 @@
                 android:text="Categoría"
                 android:textColor="@color/negro65"
                 android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/verDetalleBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="0dp"
+                android:backgroundTint="#2F2C2C"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Ver"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#D9D9D9"
+                android:textSize="9sp" />
 
 
         </LinearLayout>
