@@ -39,7 +39,7 @@ import java.util.Objects;
 public class PerfilCliente extends AppCompatActivity {
 
     ImageView imageView;
-    TextView uid, tv_nombre_edit, tv_correo_edit, tv_codigo_edit;
+    TextView textView3, tv_nombre_edit, tv_correo_edit, tv_codigo_edit;
     Button btn_editarfoto, btn_eliminar;
 
     FirebaseDatabase firebaseDatabase;
@@ -51,6 +51,7 @@ public class PerfilCliente extends AppCompatActivity {
     ArrayList<String> listallaves = new ArrayList<>();
     StorageReference storageReference;
     String id;
+
 
     private static final String TAG = "PerfilCliente";
 
@@ -64,6 +65,7 @@ public class PerfilCliente extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_cliente);
         setBottomNavigationView();
 
+        textView3 = findViewById(R.id.textView3);
         imageView = findViewById(R.id.imageView);
         tv_nombre_edit = findViewById(R.id.editNombre);
         tv_correo_edit = findViewById(R.id.editCorreo);
@@ -110,6 +112,7 @@ public class PerfilCliente extends AppCompatActivity {
                             String codigo = usuario1.getCodigo();
                             String correo = usuario1.getCorreo();
                             String url = usuario1.getUrl();
+                            textView3.setText("Hola, "+nombre);
                             tv_correo_edit.setText(correo);
                             tv_codigo_edit.setText(codigo);
                             tv_nombre_edit.setText(nombre);
@@ -288,12 +291,16 @@ public class PerfilCliente extends AppCompatActivity {
                     case R.id.perfil:
                         return true;
                     case R.id.escuchar:
-                        startActivity(new Intent(PerfilCliente.this, ListaCliente.class));
+                        Intent intent1 = new Intent(PerfilCliente.this, ListaCliente.class);
+                        intent1.putExtra("key",id);
                         overridePendingTransition(0,0);
+                        startActivity(intent1);
                         return true;
                     case R.id.libreria:
-                        startActivity(new Intent(PerfilCliente.this, LibreriaCliente.class));
+                        Intent intent = new Intent(PerfilCliente.this, LibreriaCliente.class);
+                        intent.putExtra("key2",id);
                         overridePendingTransition(0,0);
+                        startActivity(intent);
                         return true;
                 }
                 return false;

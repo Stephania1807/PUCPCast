@@ -164,13 +164,16 @@ public class ListaCliente extends AppCompatActivity {
                     case R.id.escuchar:
                         return true;
                     case R.id.libreria:
-                        startActivity(new Intent(ListaCliente.this, LibreriaCliente.class));
+                        Intent intent = new Intent(ListaCliente.this, LibreriaCliente.class);
+                        intent.putExtra("key2",id);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.perfil:
                         Intent intent1 = new Intent(ListaCliente.this, PerfilCliente.class);
                         intent1.putExtra("key2",id);
                         startActivity(intent1);
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;

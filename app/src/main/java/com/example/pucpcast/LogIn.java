@@ -143,6 +143,12 @@ public class LogIn extends AppCompatActivity {
                                                                         Intent intent = new Intent(LogIn.this, ListaCliente.class);
                                                                         intent.putExtra("key",usuario.getKey());
                                                                         startActivity(intent);
+
+//                                                                        Intent intent2 = new Intent(LogIn.this, LibreriaCliente.class);
+//                                                                        intent2.putExtra("key",usuario.getKey());
+//
+//                                                                        Intent intent3 = new Intent(LogIn.this, LibreriaCliente.class);
+//                                                                        intent3.putExtra("key",usuario.getKey());
                                                                     }
                                                                 }
 

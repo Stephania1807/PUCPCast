@@ -48,7 +48,7 @@ public class LibreriaCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_libreria_cliente);
         setBottomNavigationView();
-        id = getIntent().getStringExtra("key");
+        id = getIntent().getStringExtra("key2");
     }
 
     public void setBottomNavigationView(){
@@ -62,12 +62,16 @@ public class LibreriaCliente extends AppCompatActivity {
                     case R.id.libreria:
                         return true;
                     case R.id.escuchar:
-                        startActivity(new Intent(LibreriaCliente.this, ListaCliente.class));
+                        Intent intent1 = new Intent(LibreriaCliente.this, ListaCliente.class);
+                        intent1.putExtra("key",id);
                         overridePendingTransition(0,0);
+                        startActivity(intent1);
                         return true;
                     case R.id.perfil:
-                        startActivity(new Intent(LibreriaCliente.this, PerfilCliente.class));
+                        Intent intent = new Intent(LibreriaCliente.this, PerfilCliente.class);
+                        intent.putExtra("key2",id);
                         overridePendingTransition(0,0);
+                        startActivity(intent);
                         return true;
                 }
                 return false;
