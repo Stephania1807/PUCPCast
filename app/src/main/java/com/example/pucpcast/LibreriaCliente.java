@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -30,6 +31,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -59,7 +61,8 @@ public class LibreriaCliente extends AppCompatActivity {
         setContentView(R.layout.activity_libreria_cliente);
         setBottomNavigationView();
         id =  getIntent().getStringExtra("key2");
-
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         searchView = findViewById(R.id.searchViewMine);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -77,56 +80,48 @@ public class LibreriaCliente extends AppCompatActivity {
         episodios = new ArrayList<>();
 
         ref1  = firebaseDatabase.getReference("cliente").child("episodios");
-
-        ref1.addValueEventListener(new ValueEventListener() {
+        DatabaseReference ref = firebaseDatabase.getReference().child("usuario");
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1: snapshot.getChildren()){
+                for(DataSnapshot usuarios: snapshot.getChildren()){
 
-                    Episodio episodio = snapshot1.getValue(Episodio.class);
-
-                    DatabaseReference ref = firebaseDatabase.getReference().child("usuario");
-
-                    // OBTENER DATOS DEL USUARIO
-                    ref.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            // SI EL USUARIO EXISTE
-                            for(DataSnapshot usuarios: snapshot.getChildren()){
-
-                                Usuario usuario = usuarios.getValue(Usuario.class);
-                                listaUsuarios.add(usuario);
-                                System.out.println(id);
-
-                                for(Usuario usuario1 : listaUsuarios){
-                                    if(Objects.equals(usuario1.getKey(), id)){
-                                        if(episodio.getRegistrador().equals(usuario1.getNombre())){
+                    Usuario usuario = usuarios.getValue(Usuario.class);
+                    listaUsuarios.add(usuario);
+                    for(Usuario usuario1 : listaUsuarios){
+                        if(Objects.equals(usuario1.getKey(), id)){
+                            Log.d("msg","El usuario tiene como nombre:" +usuario1.getNombre());
+                            String id = usuario1.getKey();
+                            ref1.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot snapshot1: snapshot.getChildren()){
+                                        Episodio episodio = snapshot1.getValue(Episodio.class);
+                                        if(episodio.getId().equalsIgnoreCase(id)){
+                                            Log.d("msg","El usuario tiene como id:" +id);
+                                            Log.d("msg","El usuario tiene como nombre:" +episodio.getRegistrador());
                                             episodios.add(episodio);
                                         }
+
                                     }
+                                    adapter = new libreriaAdapter(getApplicationContext(), episodios);
+                                    recyclerView = findViewById(R.id.recyclerViewListaMine);
+                                    recyclerView.setLayoutManager(new GridLayoutManager(LibreriaCliente.this, 2));
+                                    recyclerView.setAdapter(adapter);
+
                                 }
 
-                            }
-                        }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
+                                }
+                            });
                         }
-                    });
+                        System.out.println("esta es el id: "+id);
+                        System.out.println("este es la key del usuario: "+usuario1.getKey());
+                    }
 
                 }
-                libreriaAdapter libreriaAdapter = new libreriaAdapter(LibreriaCliente.this, episodios);
-                libreriaAdapter.setEpisodios(episodios);
-                libreriaAdapter.setContext(LibreriaCliente.this);
-                recyclerView = findViewById(R.id.recyclerViewListaMine);
-                recyclerView.setAdapter(libreriaAdapter);
-                recyclerView.setLayoutManager(new GridLayoutManager(LibreriaCliente.this, 2));
-
-                libreriaAdapter.notifyItemRangeChanged(0, episodios.size());
-
-
             }
 
             @Override
@@ -134,6 +129,9 @@ public class LibreriaCliente extends AppCompatActivity {
 
             }
         });
+
+
+        Log.d("TAG", "ESTE ES ELTAMANO" +episodios.size());
     }
 
     @Override
@@ -183,8 +181,8 @@ public class LibreriaCliente extends AppCompatActivity {
                 mylist.add(object);
             }
         }
-//        libreriaAdapter listadoEquiposUsuarioAdapter = new libreriaAdapter(LibreriaCliente.this,mylist);
-//        recyclerView.setAdapter(listadoEquiposUsuarioAdapter);
+        libreriaAdapter libreriaAdapter = new libreriaAdapter(LibreriaCliente.this,mylist);
+        //recyclerView.setAdapter(listadoEquiposUsuarioAdapter);
     }
 
 
