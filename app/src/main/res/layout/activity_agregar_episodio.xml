@@ -33,7 +33,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descripciomInputLayout"
+        android:id="@+id/descripcionInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="258dp"
         android:layout_height="129dp"
@@ -77,6 +77,7 @@
         android:backgroundTint="#2F2C2C"
         android:fontFamily="@font/inter_semibold"
         android:text="Agregar"
+        android:onClick="guardarEpisodio"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#D9D9D9"
@@ -84,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripciomInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/descripcionInputLayout" />
 
     <Button
         android:id="@+id/subirImagenBtn"

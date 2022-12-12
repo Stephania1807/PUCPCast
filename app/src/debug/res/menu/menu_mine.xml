@@ -10,6 +10,6 @@
     <item
         android:icon="@drawable/ic_add_white"
         android:title="Adicionar episodio"
-        android:onClick="accionAgregarEpisodio"
+        android:onClick="btnMenu"
         app:showAsAction="ifRoom" />
 </menu>

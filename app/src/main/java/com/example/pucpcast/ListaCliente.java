@@ -71,7 +71,7 @@ public class ListaCliente extends AppCompatActivity {
 
         episodios = new ArrayList<>();
 
-        ref1  = firebaseDatabase.getReference("cliente").child("listaEpisodios");
+        ref1  = firebaseDatabase.getReference("cliente").child("episodios");
 
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
