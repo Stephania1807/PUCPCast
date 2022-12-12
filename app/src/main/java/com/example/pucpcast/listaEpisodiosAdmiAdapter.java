@@ -52,7 +52,7 @@ public class listaEpisodiosAdmiAdapter extends RecyclerView.Adapter<listaEpisodi
         Episodio e= list.get(position);
         holder.episodio = e;
         TextView titulo = holder.itemView.findViewById(R.id.titulo);
-        TextView categoria = holder.itemView.findViewById(R.id.categoria);
+        TextView categoria = holder.itemView.findViewById(R.id.registradorCliente);
         ImageView imageView = holder.itemView.findViewById(R.id.imageEpisodio);
         titulo.setText(e.getTitulo());
         categoria.setText(String.valueOf(e.getCategoria()));

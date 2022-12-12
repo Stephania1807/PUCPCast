@@ -82,11 +82,11 @@ public class ListaCliente extends AppCompatActivity {
 
                     Episodio episodio = snapshot1.getValue(Episodio.class);
                     episodios.add(episodio);
+                    System.out.println(episodios.size());
 
 
                 }
                 recyclerView = findViewById(R.id.recyclerViewListaEpisodios);
-                recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new GridLayoutManager(ListaCliente.this, 2));
                 recyclerView.setAdapter(listaEpisodiosAdapter);
 

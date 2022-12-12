@@ -2,9 +2,11 @@ package com.example.pucpcast;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,15 +20,17 @@ import java.util.ArrayList;
 
 public class listaEpisodiosAdapter extends RecyclerView.Adapter<listaEpisodiosAdapter.myViewHolder>{
     Context context;
-    ArrayList<Episodio> list;
+    ArrayList<Episodio> episodios;
 
-    public listaEpisodiosAdapter(Context context, ArrayList<Episodio> list) {
+    public listaEpisodiosAdapter(Context context, ArrayList<Episodio> episodios) {
         this.context = context;
-        this.list = list;
+        this.episodios = episodios;
 
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder{
+
+        TextView titulo, registrador;
 
         Episodio episodio;
 
@@ -47,21 +51,37 @@ public class listaEpisodiosAdapter extends RecyclerView.Adapter<listaEpisodiosAd
 
     @Override
     public void onBindViewHolder(myViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        Episodio e= list.get(position);
+        Episodio e= episodios.get(position);
         holder.episodio = e;
         TextView titulo = holder.itemView.findViewById(R.id.titulo);
-        TextView categoria = holder.itemView.findViewById(R.id.categoria);
+        TextView registrador = holder.itemView.findViewById(R.id.registradorCliente);
         ImageView imageView = holder.itemView.findViewById(R.id.imageEpisodio);
         titulo.setText(e.getTitulo());
-        categoria.setText(String.valueOf(e.getCategoria()));
+        System.out.println(e.getTitulo());
+        System.out.println(e.getRegistrador());
+        registrador.setText(e.getRegistrador());
         String url = e.getUrl();
 
         Glide.with(holder.itemView.getContext()).load(url).into(imageView);
         String id = e.getId();
+
+
+        Button btn_detalles = holder.itemView.findViewById(R.id.verDetalleBtn);
+        btn_detalles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), EpisodioGrande.class);
+                intent.putExtra("iddetalle", id);
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
+
+
     }
+
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return episodios.size();
     }
 }
