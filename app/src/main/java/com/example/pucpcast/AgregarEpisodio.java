@@ -41,7 +41,7 @@ public class AgregarEpisodio extends AppCompatActivity {
     DatabaseReference ref;
     TextInputLayout tituloInputLayout, descripcionInputLayout;
 
-    Button subirFoto;
+    Button subirFoto, agregarbtn;
     ImageView imageView;
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
@@ -69,6 +69,8 @@ public class AgregarEpisodio extends AppCompatActivity {
 
         tituloInputLayout = findViewById(R.id.tituloInputLayout);
         descripcionInputLayout = findViewById(R.id.descripcionInputLayout);
+
+
 
 
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -109,14 +111,14 @@ public class AgregarEpisodio extends AppCompatActivity {
                                 DatabaseReference ref = firebaseDatabase.getReference();
                                 DatabaseReference refequipos = ref.child("cliente").child("episodios");
 
-                                id = refequipos.push().getKey();
+                                String id2 = refequipos.push().getKey();
 
                                 String download_uri=uri.toString();
 
                                 Toast.makeText(AgregarEpisodio.this, "Se subio correctamente la foto", Toast.LENGTH_SHORT).show();
                                 episodio.setUrl(download_uri);
 
-                                refequipos.child(id).setValue(episodio).addOnSuccessListener(unused -> {
+                                refequipos.child(id2).setValue(episodio).addOnSuccessListener(unused -> {
                                     Glide.with(AgregarEpisodio.this).load(download_uri).into(imageView);
                                 });
                             }
@@ -130,7 +132,7 @@ public class AgregarEpisodio extends AppCompatActivity {
 
     public void guardarEpisodio(View view) {
 
-
+        agregarbtn = findViewById(R.id.agregarBtn);
         ref = firebaseDatabase.getReference().child("usuario");
         System.out.println(user.getUid());
         // OBTENER DATOS DEL USUARIO
@@ -144,33 +146,34 @@ public class AgregarEpisodio extends AppCompatActivity {
                     Usuario usuario = usuarios.getValue(Usuario.class);
                     listaUsuarios.add(usuario);
                     System.out.println(id);
+                    System.out.println("holiwis");
 
                     for(Usuario usuario1 : listaUsuarios){
                         if(Objects.equals(usuario1.getKey(), id)){
                             System.out.println("entra quiiiiiii");
                             System.out.println(id);
 
-                            HashMap episodio = new HashMap();
-                            episodio.put("id", id);
-                            episodio.put("titulo", tituloInputLayout.getEditText().getText().toString());
-                            episodio.put("descripcion", descripcionInputLayout.getEditText().getText().toString());
-                            episodio.put("registrador", usuario1.getNombre());
+                            agregarbtn.setOnClickListener((view) ->{
+                                HashMap episodio = new HashMap();
+                                episodio.put("id", id);
+                                episodio.put("titulo", tituloInputLayout.getEditText().getText().toString().trim());
+                                episodio.put("descripcion", descripcionInputLayout.getEditText().getText().toString().trim());
+                                episodio.put("registrador", usuario1.getNombre());
 
-                            firebaseDatabase = FirebaseDatabase.getInstance();
-                            DatabaseReference ref1  = firebaseDatabase.getReference().child("cliente").child("episodios");
+                                firebaseDatabase = FirebaseDatabase.getInstance();
+                                DatabaseReference ref1  = firebaseDatabase.getReference().child("cliente").child("episodios");
 
-                            ref1.child(id).updateChildren(episodio).addOnSuccessListener(new OnSuccessListener() {
-                                @Override
-                                public void onSuccess(Object o) {
-                                    Toast.makeText(AgregarEpisodio.this, "Guardado correctamente", Toast.LENGTH_SHORT).show();
-                                    Intent intent2 = new Intent(AgregarEpisodio.this, LibreriaCliente.class);
-                                    intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent2);
-                                }
+                                ref1.push().setValue(episodio);
+                                Toast.makeText(AgregarEpisodio.this, "Guardado correctamente", Toast.LENGTH_SHORT).show();
+                                Intent intent2 = new Intent(AgregarEpisodio.this, LibreriaCliente.class);
+                                intent2.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("key2", id);
+                                startActivity(intent2);
+
                             });
 
-
                         }
+                        System.out.println("esta es el id: "+id);
+                        System.out.println("este es la key del usuario: "+usuario1.getKey());
                     }
 
                 }

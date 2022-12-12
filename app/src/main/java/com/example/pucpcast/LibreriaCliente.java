@@ -232,8 +232,10 @@ public class LibreriaCliente extends AppCompatActivity {
     }
 
     public void btnMenu(MenuItem item){
-        Intent intent = new Intent(this, AgregarEpisodio.class);
+        Intent intent = new Intent(LibreriaCliente.this, AgregarEpisodio.class);
+        intent.putExtra("key2",id);
         startActivity(intent);
+        overridePendingTransition(0,0);
 
     }
 

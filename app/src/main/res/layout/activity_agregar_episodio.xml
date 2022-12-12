@@ -115,6 +115,7 @@
         android:textAllCaps="false"
         android:textColor="@color/naranja"
         android:textSize="14sp"
+        android:onClick="cancelar"
         app:layout_constraintEnd_toEndOf="@+id/agregarBtn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/agregarBtn"
